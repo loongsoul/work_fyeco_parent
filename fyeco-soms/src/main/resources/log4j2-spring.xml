@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 级别=OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE -->
+<!-- Log4j2 内部日志级别 -->
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <Property name="PID">????</Property>
+        <Property name="LOG_PATTERN">%clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{%5p} %clr{${sys:PID}}{magenta} %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%xwEx</Property>
+        <Property name="LOG_LOCATION">/data/logs</Property>
+        <Property name="APP_NAME">fyeco-soms</Property>
+    </Properties>
+    <Appenders>
+        <!-- 控制台 -->
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+        <!-- 文件-错误日志 -->
+        <File name="Error" fileName="${LOG_LOCATION}/${APP_NAME}_error.log" append="false">
+            <!-- 过滤 ERROR 级别的日志 -->
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT"
+                onMismatch="DENY" />
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </File>
+        <!-- 滚动文件日志 -->
+        <RollingFile name="RollingFile" fileName="${LOG_LOCATION}/${APP_NAME}.log" filePattern="${LOG_LOCATION}/${APP_NAME}_%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <!-- 基于文件大小的滚动触发策略 -->
+            <SizeBasedTriggeringPolicy size="50 MB" />
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.hibernate.validator.internal.util.Version" level="WARN" />
+        <Logger name="org.apache.coyote.http11.Http11NioProtocol" level="WARN" />
+        <Logger name="org.apache.tomcat.util.net.NioSelectorPool" level="warn" />
+        <Logger name="org.springframework" level="INFO" />
+        <Logger name="com.example" level="DEBUG" />
+        
+        <!-- 应用全局日志级别 -->
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="Error"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>

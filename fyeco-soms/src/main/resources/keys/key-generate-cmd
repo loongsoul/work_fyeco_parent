@@ -1,0 +1,1 @@
+keytool -genkey -alias boot211 -storetype PKCS12 -keyalg RSA  -keypass 123456 -keysize 1024 -validity 365 -keystore D:\tmp\boot211.p12 -storepass 123456
