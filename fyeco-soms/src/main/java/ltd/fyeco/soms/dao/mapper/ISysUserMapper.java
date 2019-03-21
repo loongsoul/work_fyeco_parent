@@ -1,7 +1,5 @@
 package ltd.fyeco.soms.dao.mapper;
 
-//import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import ltd.fyeco.soms.dao.IGenericMapper;

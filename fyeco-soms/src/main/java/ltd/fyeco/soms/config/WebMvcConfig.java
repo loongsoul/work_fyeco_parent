@@ -10,13 +10,13 @@ import org.springframework.web.servlet.config.annotation.*;
  */
 @Configuration
 @EnableWebMvc
-public class WebMvcConfig extends WebMvcConfigurationSupport {//} WebMvcConfigurer {
+public class WebMvcConfig implements WebMvcConfigurer {
 
-    /**
-     * 添加视图控制器
-     *
-     * @param registry reg
-     */
+	/**
+	 * 添加视图控制器
+	 *
+	 * @param registry reg
+	 */
 //    @Override
 //    public void addViewControllers(ViewControllerRegistry registry) {
 //        registry.addViewController("/main").setViewName("main");
@@ -26,25 +26,37 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {//} WebMvcConfigur
 //        registry.addViewController("/dashboard").setViewName("dashboard");
 //    }
 
-    /**
-     * 添加资源处理程序，处理来自Web应用程序根目录下特定位置的静态资源文件，如图像、JS和CSS
-     *
-     * @param registry reg
-     */
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**")
-        .addResourceLocations("classpath:/static/");
+	/**
+	 * 添加资源处理程序
+	 *
+	 * @param registry
+	 */
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/**")
+//		"/META-INF/resources/","classpath:/resources/",
+				.addResourceLocations("classpath:/static/", "classpath:/public/");
+//		registry.addResourceHandler("/default/**")
+//		.addResourceLocations("classpath:/static/default");
+//        registry.addResourceHandler("/templates/**")
+//		.addResourceLocations("classpath:/templates/");
+//        registry.addResourceHandler("/public/**")
+//		.addResourceLocations("classpath:/public/");
+	}
 
-//        registry.addResourceHandler("/templates/**");
-//        registry.addResourceHandler("/public/**");
-    }
-
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(new LoginInterceptor())
-//                .addPathPatterns("**")
-//                .excludePathPatterns("/static/**");
-    }
+	/**
+	 * 添加拦截器
+	 * 
+	 * @param registry
+	 */
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+//		registry.addInterceptor(new ResourceInterceptor())
+//		// 添加拦截规则
+//		.addPathPatterns("/**")
+//		// 排除拦截规则
+//		// "/templates/**", "/public/**", 
+//		.excludePathPatterns("/static/**", "/default/**");
+	}
 
 }

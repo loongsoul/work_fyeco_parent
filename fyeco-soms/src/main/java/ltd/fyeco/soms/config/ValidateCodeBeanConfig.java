@@ -1,11 +1,6 @@
 package ltd.fyeco.soms.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import ltd.fyeco.soms.config.properties.SecurityProperties;
 
 @Configuration
 public class ValidateCodeBeanConfig {

@@ -1,13 +1,7 @@
 package ltd.fyeco.soms.web.security.imgvc;
 
 import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import java.util.Random;
-
-import org.springframework.web.bind.ServletRequestUtils;
-import org.springframework.web.context.request.ServletWebRequest;
 
 import ltd.fyeco.soms.config.properties.SecurityProperties;
 
@@ -65,7 +59,8 @@ public class ImageCodeGenerator{// implements ValidateCodeGenerator {
     /**
      * 生成随机背景条纹
      */
-    private Color getRandColor(int fc, int bc) {
+    @SuppressWarnings("unused")
+	private Color getRandColor(int fc, int bc) {
         Random random = new Random();
         if (fc > 255) {
             fc = 255;
