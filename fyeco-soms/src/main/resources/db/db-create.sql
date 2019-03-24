@@ -1,8 +1,10 @@
-CREATE TABLE `examples`.`t_user`  (
+CREATE TABLE `soms`.`t_sys_user`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '标识',
+  `uid` bigint(20) NOT NULL COMMENT '用户标识',
   `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户名',
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '密码',
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '邮件',
+  `mobile` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '手机',
   `nickname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '昵称',
   `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '头像',
   `status` tinyint(2) NOT NULL COMMENT '状态:-1-已冻结/0-未激活/1-已激活',
@@ -11,10 +13,10 @@ CREATE TABLE `examples`.`t_user`  (
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `delete_time` datetime(0) NULL DEFAULT NULL COMMENT '删除时间',
   `deleted` tinyint(1) NOT NULL COMMENT '删除标识:0-未删除/1-已删除',
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`id`, `username`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `examples`.`t_country`  (
+CREATE TABLE `soms`.`t_country`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '标识',
   `country_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '国家名称',
   `country_name_zh_cn` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '国家名称_简体中文',
@@ -26,7 +28,7 @@ CREATE TABLE `examples`.`t_country`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `examples`.`t_order`  (
+CREATE TABLE `soms`.`t_order`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '标识',
   `order_no` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '订单号',
   `ship_country` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '配送国家',
@@ -47,7 +49,7 @@ CREATE TABLE `examples`.`t_order`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `examples`.`t_customer`  (
+CREATE TABLE `soms`.`t_customer`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '标识',
   `firstname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户名',
   `lastname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '密码',
@@ -64,7 +66,7 @@ CREATE TABLE `examples`.`t_customer`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `examples`.`t_goods`  (
+CREATE TABLE `soms`.`t_goods`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '标识',
   `cate_id` bigint(20) NOT NULL COMMENT '分类编号',
   `goods_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '商品名称',
@@ -85,7 +87,7 @@ CREATE TABLE `examples`.`t_goods`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `examples`.`t_goods_category`  (
+CREATE TABLE `soms`.`t_goods_category`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '标识',
   `cate_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '分类编码',
   `cate_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '分类名称',
@@ -108,7 +110,7 @@ CREATE TABLE `examples`.`t_goods_category`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
-CREATE TABLE `examples`.`t_goods_image`  (
+CREATE TABLE `soms`.`t_goods_image`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '标识',
   `cate_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '分类编码',
   `cate_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '分类名称',
@@ -132,7 +134,7 @@ CREATE TABLE `examples`.`t_goods_image`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- 规格表
-CREATE TABLE `examples`.`t_goods_format`  (
+CREATE TABLE `soms`.`t_goods_format`  (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '标识',
   `cate_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '分类编码',
   `cate_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '分类名称',

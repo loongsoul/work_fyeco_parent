@@ -4,6 +4,7 @@ import java.io.Serializable;
 //import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
 //import javax.persistence.Column;
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.GenerationType;
@@ -15,6 +16,7 @@ import ltd.fyeco.soms.domain.BaseEntity;
 /**
  * @author tianxin
  */
+@Entity
 @Table(name = "t_sys_user")
 public class SysUser extends BaseEntity implements Serializable {
 
@@ -23,28 +25,42 @@ public class SysUser extends BaseEntity implements Serializable {
 	 */
 	private static final long serialVersionUID = -3348097741408524223L;
 
+	/** 用户标识 */
+	private Long uid;
+
 	/** 用户名 */
 	private String username;
 
-	 /** 密码 */
+	/** 密码 */
 	private String password;
 
-	 /** 邮件 */
+	/** 邮件 */
 	private String email;
 
-	 /** 昵称 */
+	/** 手机 */
+	private String mobile;
+
+	/** 昵称 */
 	private String nickname;
 
-	 /** 头像 */
+	/** 头像 */
 	private String avatar;
 
-	 /** 状态:0-已冻结/1-未激活/2-已激活 */
+	/** 状态:0-已冻结/1-未激活/2-已激活 */
 	private Integer status;
 
-	 /** 角色 */
+	/** 角色 */
 	private List<SysRole> roles;
 
 	// Getters & Setters
+
+	public Long getUid() {
+		return uid;
+	}
+
+	public void setUid(Long uid) {
+		this.uid = uid;
+	}
 
 	public String getUsername() {
 		return username;
@@ -68,6 +84,14 @@ public class SysUser extends BaseEntity implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
 
 	public String getNickname() {

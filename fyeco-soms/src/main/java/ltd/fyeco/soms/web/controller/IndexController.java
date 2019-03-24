@@ -14,4 +14,11 @@ public class IndexController {
 		return "default/index";
 	}
 
+	@GetMapping( "/user/signin/test")
+	public String testPage() {
+		String test = "";
+		System.out.println(test);
+		return "default/index";
+	}
+
 }

@@ -1,7 +1,5 @@
 package ltd.fyeco.soms.service;
 
-import org.apache.ibatis.annotations.Param;
-
 import ltd.fyeco.soms.domain.entity.SysUser;
 
 /**
@@ -14,6 +12,6 @@ public interface ISysUserService extends IGenericService<SysUser, Long> {
 	 * @param username 用户名
 	 * @return
 	 */
-	SysUser loadUserByUsername(@Param("username") String username);
+	SysUser loadUserByUsername(String username);
 
 }

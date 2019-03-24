@@ -26,7 +26,7 @@ public class SysUserServiceImpl extends AbstractBaseService<SysUser, Long> imple
 	@Cacheable(cacheNames = "authority", key = "#username")
 	@Override
 	public SysUser loadUserByUsername(String username) {
-		return sysUserMapper.loadByUsername(username);
+		return sysUserMapper.loadUserByUsername(username);
 	}
 
 }

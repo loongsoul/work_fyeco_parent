@@ -16,6 +16,6 @@ public interface ISysUserMapper extends IGenericMapper<SysUser, Long> {
 	 * @param username
 	 * @return
 	 */
-	SysUser loadByUsername(@Param("username") String username);
+	SysUser loadUserByUsername(@Param("username") String username);
 
 }

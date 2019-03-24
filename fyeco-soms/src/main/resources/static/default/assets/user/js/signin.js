@@ -53,20 +53,24 @@ var UserSignin = function() {
 // required: !0,
 // email: !0
 // },
-                        password: {
+                    	password: {
                             required: !0
                         }
                     }
                 }),
                 l.valid() && (a.addClass("m-loader m-loader--right m-loader--light").attr("disabled", !0), l.ajaxSubmit({
-                    url: "http://localhost:8080/user/signin",
-                    type: "post",
+//                    url: "http://localhost:9090/user/signin",
+//                    type: "POST",
                     success: function(e, t, r, s) {
-                        setTimeout(function() {
-                            a.removeClass("m-loader m-loader--right m-loader--light").attr("disabled", !1),
-                            i(l, "danger", "用户名或密码不正确。请重试。")
-                        },
-                        2e3)
+                    	alert(e);
+                    	alert(t);
+                    	alert(r);
+                    	alert(s);
+//                        setTimeout(function() {
+//                            a.removeClass("m-loader m-loader--right m-loader--light").attr("disabled", !1),
+//                            i(l, "danger", "用户名或密码不正确。请重试。")
+//                        },
+//                        2e3)
                     }
                 }))
             }),
@@ -86,7 +90,7 @@ var UserSignin = function() {
                         password: {
                             required: !0
                         },
-                        rpassword: {
+                        password: {
                             required: !0
                         },
                         agree: {

@@ -21,14 +21,25 @@ public abstract class BaseEntity implements Serializable {
 
 	// 基础属性
 
+	/** 标识 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;// 标识
-	private Long creator; // 创建者
-	private Date createTime; // 创建时间
-	private Date updateTime; // 更新时间
-	private Date deleteTime; // 删除时间
-	private Integer deleted; // 删除标识:0-未删除/1-已删除
+	private Long id;
+	
+	/** 创建者 */
+	private Long creator;
+	
+	/** 创建时间 */
+	private Date createTime;
+	
+	/** 更新时间 */
+	private Date updateTime;
+	
+	/** 删除时间 */
+	private Date deleteTime;
+	
+	/** 删除标识:0-未删除/1-已删除 */
+	private Integer deleted;
 
 	// 排序属性
 //	private String order = "DESC"; // 排序方法:ASC-升序/DESC-降序
